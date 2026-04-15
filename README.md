@@ -23,7 +23,7 @@ bun run dev
 
 ```bash
 docker build -t share-secret .
-docker run -d -p 3000:80 share-secret
+docker run -d -p 5050:80 share-secret
 ```
 
 ## Tech Stack
