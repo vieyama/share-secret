@@ -2,7 +2,7 @@
 
 A secure web app for sharing sensitive information with end-to-end encryption.
 
-[GitHub](https://github.com/yourusername/share-secret)
+[GitHub](https://github.com/vieyama/share-secret)
 
 ## Features
 
