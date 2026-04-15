@@ -15,8 +15,8 @@ A secure web app for sharing sensitive information with end-to-end encryption.
 ## Quick Start
 
 ```bash
-npm install
-npm run dev
+bun install
+bun run dev
 ```
 
 ## Docker Deployment

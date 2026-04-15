@@ -1,0 +1,43 @@
+kind: pipeline
+type: docker
+name: default
+
+steps:
+  - name: build-and-deploy
+    image: docker:26-cli
+    pull: if-not-exists
+    volumes:
+      - name: dockersock
+        path: /var/run/docker.sock
+    environment:
+      IMAGE_NAME: share-secret-app
+      CONTAINER_NAME: share-secret-container
+      PORT: 5050
+    commands:
+      - export DOCKER_BUILDKIT=0
+
+      # Debug info
+      - docker version
+      - docker info
+
+      # Build image
+      - docker build -t $IMAGE_NAME .
+
+      # Stop & remove old container
+      - docker stop $CONTAINER_NAME || true
+      - docker rm $CONTAINER_NAME || true
+
+      # Run container
+      - docker run -d --name $CONTAINER_NAME --restart unless-stopped -p $PORT:5050 $IMAGE_NAME
+
+      - echo "Deployment successful!"
+      - echo "App running on port $PORT"
+
+volumes:
+  - name: dockersock
+    host:
+      path: /var/run/docker.sock
+
+trigger:
+  branch:
+    - main

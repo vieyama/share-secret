@@ -3,8 +3,7 @@ import { Shield, Clock, Eye, Lock, Key, Loader2, Copy, Check, ChevronDown, Chevr
 import { encryptSecret, createShareableLink } from '../utils/crypto'
 
 const expiryOptions = [
-  { value: 0.5, label: '30 seconds' },
-  { value: 1, label: '1 minutes' },
+  { value: 1, label: '1 minute' },
   { value: 5, label: '5 minutes' },
   { value: 60, label: '1 hour' },
   { value: 1440, label: '24 hours' },
